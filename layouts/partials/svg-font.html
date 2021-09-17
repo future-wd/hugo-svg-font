@@ -1,0 +1,23 @@
+{{- /*
+HUGO SVG FONT
+usage: {{ partial "scripts/svg-font" (dict "svg" "icons/bootstrap/envelope" "em" 1 "block" true/false )}} 
+*/ -}}
+{{- $svgFile := resources.Get (printf "%s.svg" .svg ) -}}
+{{- /* strip file path and extension */ -}}
+{{- /*- $svgFileName := replaceRE ".*\\/(.*)\\.[^.]+$" "$1" $svgFile.Name */ -}}
+{{- /* print svg content */ -}}
+{{- $svgContent := $svgFile.Content -}}
+{{- /* declare size for svg style */ -}}
+{{- $size := .em | default 1 -}}
+{{- /* display: block style conditional - keeps a square svg square but not useful for use inline with text */ -}}
+{{- $block := "" -}}
+{{- if .block -}}
+{{- $block = "display: block;" -}}
+{{- end -}}
+{{- /* add size in em to style parameter */ -}}
+{{- $style := printf "height: %vem; width: %vem; font-size: inherit; color: inherit; fill: currentColor; vertical-align: middle; %s" $size $size $block }}
+{{- /* add size to regex replacement string */ -}}
+{{- $addStyle := printf `<svg ${1} style="%s">${2}</svg>` $style -}}
+{{- /* modify the SVG tag */ -}}
+{{- $svgModified := replaceRE `<svg (.*")>((\n|.)+)</svg>` $addStyle $svgContent -}}
+{{- $svgModified | safeHTML -}}
