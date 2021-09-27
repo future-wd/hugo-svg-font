@@ -1,10 +1,12 @@
 {
   "name": "@future-wd/hugo-svg-font",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Enables svgs to behave like svg fonts",
   "main": "/layouts/partials/svg-font.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "standard-version",
+    "release:dry-run": "standard-version --dry-run",
+    "git:push": "git push --follow-tags origin master"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
     "Module"
   ],
   "author": "Sean Emerson",
-  "license": "CC0-1.0"
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "standard-version": "^9.3.1"
+  }
 }
