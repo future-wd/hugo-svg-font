@@ -3,7 +3,7 @@
 usage (don't add .svg to svg paths)
 
 ```
-{{ partial "scripts/svg-font" (dict "svg" "icons/bootstrap/envelope")}}
+{{ partial "svg-font" (dict "svg" "icons/bootstrap/envelope")}}
 ```
 
 optional
