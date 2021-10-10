@@ -2,7 +2,11 @@
 HUGO SVG FONT
 usage: {{ partial "scripts/svg-font" (dict "svg" "icons/bootstrap/envelope" "em" 1 "block" true/false )}} 
 */ -}}
-{{- $svgFile := resources.Get (printf "%s.svg" .svg ) -}}
+{{- $glob := "%s.svg" -}}
+{{- if strings.HasSuffix .svg ".svg" }}
+  {{- $glob = "%s.*" -}}
+{{- end -}}
+{{- $svgFile := resources.Get (printf $glob .svg ) -}}
 {{- /* strip file path and extension */ -}}
 {{- /*- $svgFileName := replaceRE ".*\\/(.*)\\.[^.]+$" "$1" $svgFile.Name */ -}}
 {{- /* print svg content */ -}}
