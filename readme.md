@@ -22,3 +22,10 @@ Set block to true if you are not using svg inline with text.
 ``` HTML
 {{ partial "svg-font" (dict "svg" "icons/bootstrap/envelope" "em" 2 "block" true )}}
 ```
+
+You need to import required css from `/assets/scss/svg-font.scss'
+
+```SCSS
+// importing from index.html in /assets/scss/index.scss
+@import "svg-font.scss";
+```
