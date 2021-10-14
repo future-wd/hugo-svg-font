@@ -29,3 +29,11 @@ You need to import required css from `/assets/scss/svg-font.scss'
 // importing from index.html in /assets/scss/index.scss
 @import "svg-font.scss";
 ```
+
+## Import module
+
+
+module:
+  imports:
+  - path: github.com/future-wd/hugo-image
+  - path: github.com/future-wd/hugo-svg-font/v2
