@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](/github.com/future-wd/hugo-svg-font/compare/v2.0.3...v2.1.0) (2021-10-14)
+
+
+### Features
+
+* add title and desc ([7e8ecc8](/github.com/future-wd/hugo-svg-font/commit/7e8ecc849a6df5fde7ad93fa11b7f0702f81f709))
+
 ### [2.0.3](/github.com/future-wd/hugo-svg-font/compare/v2.0.2...v2.0.3) (2021-10-14)
 
 
