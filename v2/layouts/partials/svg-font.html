@@ -49,6 +49,7 @@ usage: {{ partial "scripts/svg-font" (dict "src" "icons/bootstrap/envelope" "em"
   {{- $title = printf `<title id="%s">%s</title>` $titleId . -}}
   {{- $ariaTitle = printf `aria-labelledby="%s"` $titleId -}}
 {{- end -}}
+{{- /* format desc */ -}}
 {{- $ariaDesc := "" -}}
 {{- with $desc -}}
   {{- $descId := printf "%s-desc" $random }}
