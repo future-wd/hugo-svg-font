@@ -2,10 +2,10 @@
 HUGO SVG FONT
 usage: {{ partial "scripts/svg-font" (dict "src" "icons/bootstrap/envelope" "em" 1 "block" true/false )}} 
 */ -}}
-{{- $seed := "salt" -}}
-{{- $random := delimit (shuffle (split (md5 $seed) "" )) "" -}}
+{{- $random := delimit (shuffle (split (md5 "salt") "" )) "" -}}
+{{- /* init variables with defaults */ -}}
 {{- $src := "" -}}
-{{- $size := 1 -}}
+{{- $em := 1 -}}
 {{- $block := false -}}
 {{- $title := "" -}}
 {{- $desc := "" -}}
@@ -18,9 +18,9 @@ usage: {{ partial "scripts/svg-font" (dict "src" "icons/bootstrap/envelope" "em"
   {{- with .desc -}}
     {{- $desc = . -}}
   {{- end -}}
-  {{- /* declare size for svg style */ -}}
-  {{- $size := .em | default 1 -}}
-  {{- /* display: block style conditional - keeps a square svg square but not useful for use inline with text */ -}}
+  {{- with .em -}}
+  {{- $em := . -}}
+  {{- end -}}
   {{- with .block -}}
     {{- $block = true -}}
   {{- end -}}
@@ -29,19 +29,16 @@ usage: {{ partial "scripts/svg-font" (dict "src" "icons/bootstrap/envelope" "em"
   {{- $src = . -}}
 {{- end -}}
 {{- /* add svg file suffix if not present in $src  */ -}}
-{{- $glob := "%s.svg" -}}
-{{- if strings.HasSuffix $src ".src" -}}
-  {{- $glob = "%s.*" -}}
+{{- if not (strings.HasSuffix $src ".svg") -}}
+  {{- $src = printf "%s.svg" $src -}}
 {{- end -}}
 {{- /* get svg file from resources folder  */ -}}
-{{- $svgFile := resources.Get (printf $glob $src ) -}}
-{{- /* get svg content */ -}}
-{{- $svgContent := $svgFile.Content -}}
+{{- $svgFile := resources.Get $src -}}
 {{- /* extract text components from svg file with regex  */ -}}
-{{- $height := index (findRE `height=\"([0-9]*)\"` $svgContent 1) 0 -}}
-{{- $width := index (findRE `width=\"([0-9]*)\"` $svgContent 1) 0 -}}
-{{- $viewBox := index (findRE `viewBox=\"([0-9\s]*)\"` $svgContent 1) 0 -}}
-{{- $content := delimit (findRE `<path(.*)/>` $svgContent) "" -}}
+{{- $height := index (findRE `height=\"([0-9]*)\"` $svgFile.Content 1) 0 -}}
+{{- $width := index (findRE `width=\"([0-9]*)\"` $svgFile.Content 1) 0 -}}
+{{- $viewBox := index (findRE `viewBox=\"([0-9\s]*)\"` $svgFile.Content 1) 0 -}}
+{{- $paths := delimit (findRE `<path(.*)/>` $svgFile.Content) "" -}}
 {{- /* format title */ -}}
 {{- $ariaTitle := "" -}}
 {{- with $title -}}
@@ -57,12 +54,13 @@ usage: {{ partial "scripts/svg-font" (dict "src" "icons/bootstrap/envelope" "em"
   {{- $ariaDesc = printf `aria-describedby="%s"` $descId -}}
 {{- end -}}
 {{- /* assign classes */ -}}
-{{- $class := (slice "svg-font" (printf "em-%v" $size)) -}}
+{{- $class := (slice "svg-font" (printf "em-%v" $em)) -}}
 {{- if $block -}}
 {{- $class = $class | append "d-block" -}}
 {{- end -}}
 {{- $class = delimit $class " " -}}
 {{- $class = printf `class="%s"` $class -}}
 {{- $attr := (slice $height $width $viewBox $class $ariaTitle $ariaDesc) -}}
-{{- $svgModified := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" %s>%v %v %v</svg>` (delimit $attr " ") $title $desc $content -}}
+{{- $content := (slice $title $desc $paths) -}}
+{{- $svgModified := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" %s>%s</svg>` (delimit $attr " ") (delimit $content " ") -}}
 {{- $svgModified | safeHTML -}}
