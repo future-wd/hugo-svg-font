@@ -3,17 +3,19 @@
   color: inherit; 
   fill: currentColor; 
   vertical-align: middle;
-}
 
-.svg-font.d-block {
-  display:block;
-}
+  .d-block {
+    display:block;
+  }
 
-@for $i from 1 to 5 {
-  .svg-font.em {
-    &-#{$i} {
-      height: ($i)+em;
-      width: ($i)+em;
+  @for $i from 1 to 5 {
+    .em {
+      &-#{$i} {
+        height: ($i)+em;
+        width: ($i)+em;
+      }
     }
   }
 }
+
+
