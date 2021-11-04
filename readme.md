@@ -1,28 +1,46 @@
 # Hugo SVG Font
 
-## Usage
+## Simple Partial Usage
 
-The `src` path is relative to the resources folder. The following example shows defaults
-
-```HTML
-{{ partial "svg-font" (dict "src" "icons/bootstrap/envelope" "em" 1 "block" false ) }}
-```
-
-As the example above uses defaults to you can use the following shortcut (pass the path as the partials context):
+The "source" path is relative to the resources folder.
 
 ```HTML
 {{ partial "svg-font" "icons/bootstrap/envelope" }}
 ```
 
-## Optional
+## Optional Arguments for Partial
 
-SVG width defaults to 1em (if the svg is 16px wide)
-
-Set block to true if you are not using svg inline with text.
+To use the optional argument you must pass a dict as the partials context.
 
 ``` HTML
-{{ partial "svg-font" (dict "src" "icons/bootstrap/envelope" "em" 2 "block" true )}}
+{{ partial "svg-font" (dict "src" "icons/bootstrap/envelope" "em" 2 "block" true "title" "Icon Title" "desc" "Icon Desc")}}
 ```
+
+`src` points to the SVG file relative to the assets folder. The .svg suffix is optional.
+
+`em` is for setting the width that the icon will be displayed at. The default is 1em which will display an svg at its native size.
+
+`block` is set to true if you are not using svg inline with text. This enables `display:block`.
+
+`title` adds a title tag which browsers pick up and display on hover. It also adds `aria-labelledby` to the SVG. (for assistive technology). The title is useful for desktop users, but does not add functionality for mobile users. (who aren't using assistive technology/screen readers)
+
+`description` adds a description tag and adds `aria-describedby` to the SVG. (for assistive technology)
+
+## Shortcode usage
+
+{{< svg-font src="icons/bootstrap/envelope" em=2 block=true title="Icon Title" desc="Icon Desc" >}}
+
+## Styling your icons
+
+You need to wrap your partial or shortcode in a div or span and add CSS classes to change the size and color.
+
+An example utilizing bootstrap 5's utility classes is as follows:
+
+```HTML
+<span class="fs-2 text-primary">{{ partial "svg-font" "icons/bootstrap/envelope" }}</span>
+```
+
+*fs-2 changes the font size for the svg and text-primary changes the line color to primary (blue by default).*
 
 ## Installation
 
