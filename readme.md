@@ -28,6 +28,8 @@ Set block to true if you are not using svg inline with text.
 
 ### Import module
 
+Ensure that you are importing v2 as v1 is depreciated and not maintained.
+
 ```YAML
 # config.yaml
 module:
