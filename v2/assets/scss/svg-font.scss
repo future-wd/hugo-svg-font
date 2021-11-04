@@ -1,21 +1,19 @@
 .svg-font {
-  font-size: inherit; 
-  color: inherit; 
-  fill: currentColor; 
+  font-size: inherit;
+  color: inherit;
+  fill: currentColor;
   vertical-align: middle;
 
-  .d-block {
-    display:block;
+  &.d-block {
+    display: block;
   }
 
   @for $i from 1 to 5 {
-    .em {
+    &.em {
       &-#{$i} {
-        height: ($i)+em;
-        width: ($i)+em;
+        height: ($i) + em;
+        width: ($i) + em;
       }
     }
   }
 }
-
-
