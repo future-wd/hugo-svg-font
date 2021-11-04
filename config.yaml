@@ -1,4 +1,4 @@
 module:
   hugoVersion:
       extended: false
-      min: "80.0.0"
+      min: "0.80.0"
