@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](/github.com/future-wd/hugo-svg-font/compare/v2.1.1...v2.3.0) (2021-11-04)
+
+
+### Features
+
+* css import partial ([ac1c510](/github.com/future-wd/hugo-svg-font/commit/ac1c5100156623244c41b2594df3581e5aeae3fb))
+* shortcode to call partial ([9535f0d](/github.com/future-wd/hugo-svg-font/commit/9535f0dabde8466ddc8f8b0f8d13f59f943f82be))
+
+
+### Bug Fixes
+
+* fix nesting ([9accc0e](/github.com/future-wd/hugo-svg-font/commit/9accc0eba1b30a361a982e281c1d0df9d6221f28))
+* minor syntax ([2cffb48](/github.com/future-wd/hugo-svg-font/commit/2cffb481d5c02e7ad59c1c511ec2ed47d873b742))
+* nest scss ([9070fe1](/github.com/future-wd/hugo-svg-font/commit/9070fe1e2e4f3d5d693d321efc13426c8cdecdd8))
+
 ## [2.2.0](/github.com/future-wd/hugo-svg-font/compare/v2.1.1...v2.2.0) (2021-11-04)
 
 
