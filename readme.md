@@ -1,6 +1,7 @@
 # Hugo SVG Font
 
-usage (optionally .svg to svg paths)
+## Usage
+
 path is relative to the resources folder. The following example shows defaults
 
 ```HTML
@@ -13,7 +14,7 @@ As the example above uses defaults to you can use the following shortcut (pass t
 {{ partial "svg-font" "icons/bootstrap/envelope" }}
 ```
 
-optional
+## Optional
 
 SVG width defaults to 1em (if the svg is 16px wide)
 
@@ -23,6 +24,19 @@ Set block to true if you are not using svg inline with text.
 {{ partial "svg-font" (dict "svg" "icons/bootstrap/envelope" "em" 2 "block" true )}}
 ```
 
+## Installation
+
+### Import module
+
+```YAML
+# config.yaml
+module:
+  imports:
+  - path: github.com/future-wd/hugo-svg-font/v2
+```
+
+### Import CSS
+
 You need to import required css from `/assets/scss/svg-font.scss'
 
 ```SCSS
@@ -30,10 +44,8 @@ You need to import required css from `/assets/scss/svg-font.scss'
 @import "svg-font.scss";
 ```
 
-## Import module
+Or instead run the following partial in the projects head to compile the scss (source map and non-compressed CSS provided for development use)
 
-
-module:
-  imports:
-  - path: github.com/future-wd/hugo-image
-  - path: github.com/future-wd/hugo-svg-font/v2
+```HTML
+{{- partial "svg-font/css" . }}
+```
