@@ -42,7 +42,7 @@ module:
 You need to import required css from `/assets/scss/svg-font.scss'
 
 ```SCSS
-// importing from index.html in /assets/scss/index.scss
+// /assets/scss/index.scss
 @import "svg-font.scss";
 ```
 
