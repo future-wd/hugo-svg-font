@@ -1,6 +1,6 @@
 {
   "name": "@future-wd/hugo-svg-font",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Enables svgs to behave like svg fonts",
   "main": "/layouts/partials/svg-font.html",
   "scripts": {
