@@ -1,0 +1,9 @@
+{{- $src := resources.Get "scss/svg-font.scss" -}}
+{{ if eq (hugo.Environment) "development" -}}
+  {{ $options := (dict "targetPath" "css/image.css" "transpiler" "libsass" "enableSourceMap" true) -}}
+  {{ $src = $src | toCSS $options | resources.Fingerprint -}}
+{{ else -}}
+  {{ $options := (dict "targetPath" "css/image.css" "transpiler" "libsass" "outputStyle" "compressed") -}}
+  {{ $src = $src | toCSS $options | resources.Fingerprint -}}
+{{ end -}}
+<link rel="stylesheet" href="{{ $src.Permalink | relURL }}" integrity="{{ $src.Data.Integrity }}" crossorigin="anonymous">
