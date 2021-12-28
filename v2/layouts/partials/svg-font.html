@@ -66,5 +66,5 @@ usage: {{ partial "scripts/svg-font" (dict "src" "icons/bootstrap/envelope" "em"
 {{- $class = printf `class="%s"` $class -}}
 {{- $attr := (slice $height $width $viewBox $class $ariaTitle $ariaDesc) -}}
 {{- $content := (slice $title $desc $paths) -}}
-{{- $svgHTML := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" %s>%s</svg>` (delimit $attr "") (delimit $content "") -}}
+{{- $svgHTML := printf `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" %s>%s</svg>` (delimit $attr "") (delimit $content "") -}}
 {{- $svgHTML | safeHTML -}}
